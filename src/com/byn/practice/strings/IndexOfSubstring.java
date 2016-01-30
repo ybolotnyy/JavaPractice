@@ -8,5 +8,7 @@ public class IndexOfSubstring {
         String str = "Hello Google";
         int index = str.indexOf("Google");
         System.out.printf("Index of \"Google\" is %d", index);
+
+
     }
 }
