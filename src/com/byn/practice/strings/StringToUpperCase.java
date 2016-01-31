@@ -7,7 +7,8 @@ import java.util.Scanner;
  */
 public class StringToUpperCase {
     public static void main(String[] args){
-        Scanner input = new Scanner(System.in);
-        String str = input.next();
+        String st = "hello Google";
+
+        System.out.printf("String \"%s\" to uppercase: %s", st, st.toUpperCase());
     }
 }
