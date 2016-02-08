@@ -27,9 +27,9 @@ public class reverseArray {
     }
 
     public static void swap(int[] arr, int left, int right){
-        int temp = arr[left];
-        arr[left] = right;
-        arr[right] = temp;
+        arr[left] = arr[left] + arr[right];
+        arr[right] = arr[left] - arr[right];
+        arr[left] = arr[left] - arr[right];
     }
 
     public static void printArr(int[] arr){
