@@ -16,7 +16,7 @@ public class HashOfString {
         int n = str.length();
 
         for (int i = 0; i < n; i++){
-            System.out.printf("s[%d] = %c | hash = %d + ", i, str.charAt(i), hash);
+            System.out.printf("s[%d] = %c | Hash = %d + ", i, str.charAt(i), hash);
             hash = hash + (long) (str.charAt(i)*Math.pow(31,(n-i)));
             System.out.printf("%s*31^(%d-%d),  \n", str.charAt(i), n, i);
         }
