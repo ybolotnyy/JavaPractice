@@ -17,8 +17,8 @@ public class BinarySearch {
         arrayMap.put("oneElementArray", oneElementArr);
 
         int[] arr = arrayMap.get("validArray");
-        System.out.printf("Searching element %d in '%s' \n", 77, "validArray");
-        System.out.println("position: " + binarySearch(arr,77));
+        System.out.printf("Searching element %d in '%s' \n", 777, "validArray");
+        System.out.println("position: " + binarySearch(arr,777));
     }
 
     public static int binarySearch(int[] arr, int key){
@@ -39,7 +39,7 @@ public class BinarySearch {
         int rightBound = arr.length-1;
 
         while (lefBound <= rightBound){
-            int currentPointer = lefBound + (rightBound - lefBound) / 2;
+            int currentPointer = (rightBound + lefBound) / 2;
             System.out.printf("leftBound=%d, currentPointer=%d, rightBound=%d   \n\n",
                     lefBound, currentPointer, rightBound);
 
