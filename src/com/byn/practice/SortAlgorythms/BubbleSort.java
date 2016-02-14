@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class BubbleSort {
     public static void main(String[] args){
         int[] arr = {9, 7, 5, 3, 1, 2, 4, 6, 8, 0};
+        //int[] arr = {0,1,2,3,4,5,6,7,8,9};
         System.out.println(Arrays.toString(arr));
         System.out.println(Arrays.toString(bubbleSort(arr)));
     }
@@ -22,18 +23,22 @@ public class BubbleSort {
         }
 
         int outer = arr.length - 1;
+        int step = 0;
+        boolean wasSwap = false;
 
-        while (outer > 0){
+        do{
             for (int i = 0; i < outer; i++){
+                step++;
                 if (arr[i] > arr[i+1]){
                     System.out.printf("swapping a[%d]:%d<=>%d:a[%d]    ", i, arr[i], arr[i+1], i+1);
-                    swap(arr, i, i+1);
+                    swap(arr, i, i+1); wasSwap = true;
                     System.out.println(Arrays.toString(arr));
-                }
+                } else wasSwap = false;
             }
             outer--;
-        }
-
+            System.out.printf("outer=%d \n", outer);
+        } while (wasSwap && (outer > 0));
+        System.out.printf("%d steps were made \n", step);
         return arr;
     }
 
