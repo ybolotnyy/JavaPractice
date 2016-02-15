@@ -10,8 +10,6 @@ public class SelectionSort {
     int[] arr = {9, 7, 5, 3, 1, 2, 4, 6, 8, 0};
     System.out.println(Arrays.toString(arr));
     System.out.println(Arrays.toString(selectionSort(arr)));
-
-
   }
 
   public static int[] selectionSort(int[] arr){
