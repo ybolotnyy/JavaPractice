@@ -12,38 +12,41 @@ public class StackBasedOnArray {
   public static void main(String[] args){
     StackBasedOnArray ms = new StackBasedOnArray(10);
 
-    ms.push(9);
-    ms.push(8);
-    ms.push(7);
-    ms.push(6);
-    ms.push(5);
-    ms.push(4);
-    ms.push(3);
-    ms.push(2);
-    ms.push(1);
-    ms.push(0);
+    try {
+      ms.push(9);
+      ms.push(8);
+      ms.push(7);
+      ms.push(6);
+      ms.push(5);
+      ms.push(4);
+      ms.push(3);
+      ms.push(2);
+      ms.push(1);
+      ms.push(0);
 
-    ms.push(11);
-    ms.push(22);
-    ms.pop();
+      ms.push(11);
+      ms.push(22);
+      ms.pop();
 
-    ms.push(11);
-    ms.pop();
-    ms.push(0);
+      ms.push(11);
+      ms.pop();
+      ms.push(0);
 
-    ms.pop();
-    ms.pop();
-    ms.pop();
-    ms.pop();
-    ms.pop();
-    ms.pop();
-    ms.pop();
-    ms.pop();
-    ms.pop();
-    ms.pop();
+      ms.pop();
+      ms.pop();
+      ms.pop();
+      ms.pop();
+      ms.pop();
+      ms.pop();
+      ms.pop();
+      ms.pop();
+      ms.pop();
+      ms.pop();
 
-
-    System.out.printf("\n peek at top - %d \n", ms.peek());
+      System.out.printf("\n peek at top - %d \n", ms.peek());
+    } catch (StackFullOrEmptyException e) {
+      System.out.println("* user exception * : " + e.getReason());
+    }
 
   }
 
@@ -53,10 +56,10 @@ public class StackBasedOnArray {
     topIndex = -1;
   }
 
-  public void push(int element) {
-    if (topIndex +1 == maxSize) {
+  public void push(int element) throws StackFullOrEmptyException {
+    if (topIndex + 1 == maxSize) {
       System.out.printf("\nPush '%d' rejected: the Stack already has %d/%d occupancy \n", element, topIndex + 1, maxSize);
-      return;
+      throw new StackFullOrEmptyException(topIndex, maxSize);
     }
     StackArray[++topIndex] = element;
 
@@ -64,10 +67,11 @@ public class StackBasedOnArray {
     print();
   }
 
-  public int pop() {
+  public int pop() throws StackFullOrEmptyException {
     int topElement = 0;
     if (topIndex == -1) {
-      System.out.println("Pop rejected: The Stack is empty");
+  //    System.out.println("Pop rejected: The Stack is empty");
+      throw new StackFullOrEmptyException(topIndex, maxSize);
     } else {
       topElement = StackArray[topIndex--];
       System.out.printf("popped '%d' <--- ", topElement);
@@ -76,10 +80,11 @@ public class StackBasedOnArray {
     return topElement;
   }
 
-  public int peek() {
+  public int peek() throws StackFullOrEmptyException {
     if (topIndex == -1) {
-      System.err.println("The Stack is empty");
-      return -1000;
+//      System.err.println("The Stack is empty - throwing exception");
+      //return -1000;
+      throw new StackFullOrEmptyException(topIndex, maxSize);
     }
     return StackArray[topIndex];
   }

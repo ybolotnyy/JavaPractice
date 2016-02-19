@@ -1,9 +1,9 @@
-package com.byn.practice.UserExceptions;
+package com.byn.practice.Stack;
 
 /**
  * Created by byn on 2/18/16.
  */
-public class StackFullOrEmptyException {
+public class StackFullOrEmptyException extends Exception {
   private int currentSize;
   private int maxSize;
 
