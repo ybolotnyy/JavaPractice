@@ -26,51 +26,72 @@ public class Queue {
     q.insert(9); q.print();
     q.insert(10); q.print();
 
+    q.peekFront();
+
+    q.remove(); q.print();
   }
 
   public Queue(int s) {
     this.maxSize = s;
+    this.nItems = -1;
+    this.front = -1;
+    this.rear = -1;
     this.queValues = new int[maxSize];
     System.out.println("Initialized queue array length " + queValues.length + ": " + Arrays.toString(queValues));
   }
 
   public void insert(int intValue) {
     if (! isFull()) {
-      rear = nItems;
-      queValues[nItems++] = intValue;
+      queValues[++rear] = intValue;
+      nItems++;
     }
   }
 
   public int remove() {
     if (! isEmpty()) {
-      return queValues[nItems--];
-      front
+      int value = queValues[++front];
+      nItems--;
+      System.out.printf("Removed %d - ", value);
+      return value;
     }
     return -100;
   }
 
   public boolean isEmpty() {
-    return (nItems == 0);
+    return (nItems == -1);
   }
 
   public boolean isFull() {
     return (nItems == maxSize);
   }
 
+  public int size() {
+    return nItems;
+  }
+
+  public int peekFront() {
+    if (isEmpty()) {
+      System.out.println("Can't peek. Queue is empty");
+      return -1000;
+    }
+    System.out.printf("Peeked from front: %d", queValues[front]);
+    return queValues[front];
+  }
+
   public void print() {
 
     final String COMMA = ", ";
-    final String FRONT_MARKER = " >";
-    final String REAR_MARKER = "> ";
+    final String FRONT_MARKER = " >>";
+    final String REAR_MARKER = "=> ";
 
     System.out.printf("%d elements in queue: ", nItems);
     System.out.print("[");
-    for (int i = 0; i < maxSize; i++) {
+    for (int i = maxSize - 1; i >= 0; i--) {
     //  if (queValues[i] == )
       if (i == 0) {
-        System.out.printf("%s%s", queValues[i], COMMA);
-      } else if (i == maxSize - 1) {
         System.out.printf("%s", queValues[i]);
+      } else if (i == maxSize - 1) {
+        System.out.printf("%s%s", queValues[i], COMMA);
       } else if (i == front) {
         System.out.printf("%s%s%s", FRONT_MARKER, queValues[i]);
       } else if (i == rear) {
