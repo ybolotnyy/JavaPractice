@@ -1,4 +1,4 @@
-package com.byn.practice;
+package com.byn.practice.Queues;
 
 import java.util.Arrays;
 
@@ -71,7 +71,7 @@ public class Queue {
 
   public int peekFront() {
     if (isEmpty()) {
-      System.out.println("Can't peek. Queue is empty");
+      System.out.println("Can't peek. Queues is empty");
       return -1000;
     }
     System.out.printf("Peeked from front: %d \n", queValues[front]);
@@ -100,10 +100,10 @@ public class Queue {
     System.out.print("]");
 
     if (isEmpty()) {
-      System.out.printf("  Queue is empty!");
+      System.out.printf("  Queues is empty!");
     } else
     if (isFull()) {
-      System.out.printf("  Queue is full!");
+      System.out.printf("  Queues is full!");
     }
 
     System.out.println();
@@ -133,10 +133,10 @@ public class Queue {
     System.out.print("]");
 
     if (isEmpty()) {
-      System.out.printf("  Queue is empty!");
+      System.out.printf("  Queues is empty!");
     } else
     if (isFull()) {
-      System.out.printf("  Queue is full!");
+      System.out.printf("  Queues is full!");
     }
 
     System.out.println();
