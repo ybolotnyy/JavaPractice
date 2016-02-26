@@ -28,7 +28,17 @@ public class LinkedList {
     ll.insertFirst(4);
     ll.insertFirst(5);
 
-    ll.DisplayList();
+    ll.displayList();
+
+    ll.deleteFirst();
+    ll.deleteFirst();
+
+    ll.displayList();
+
+    ll.insertFirst(4);
+    ll.insertFirst(5);
+
+    ll.displayList();
   }
 
   private Link first;
@@ -48,7 +58,13 @@ public class LinkedList {
     newLink.DisplayLink(); System.out.println(" was inserted");
   }
 
-  public void DisplayList() {
+  public void deleteFirst() {
+    Link linkToRemove = first;
+    first = linkToRemove.next;
+    linkToRemove.DisplayLink(); System.out.println(" was deleted");
+  }
+
+  public void displayList() {
     Link currentLink = first;
     int count = 0;
     while (currentLink != null) {
