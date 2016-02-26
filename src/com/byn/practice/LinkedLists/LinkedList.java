@@ -13,6 +13,10 @@ public class LinkedList {
       this.iData = iData;
       next = null;
     }
+
+    public void DisplayLink() {
+      System.out.printf("%d", iData);
+    }
   }
 
   public static void main(String[] args) {
@@ -24,7 +28,7 @@ public class LinkedList {
     ll.insertFirst(4);
     ll.insertFirst(5);
 
-    ll.print();
+    ll.DisplayList();
   }
 
   private Link first;
@@ -33,28 +37,26 @@ public class LinkedList {
     first = null;
   }
 
-  public void insertFirst(int iData) {
-
-    if (first == null)
-    {
-      first = new Link(iData);
-      first.next = null;
-    }
-    else
-    {
-      Link temp = first;
-      first = new Link(iData);
-      first.next = temp;
-    }
+  public boolean isEmpty() {
+    return (first == null);
   }
 
-  public void print() {
-    System.out.printf("%d > ", first.iData);
+  public void insertFirst(int iData) {
+    Link newLink = new Link(iData);
+    newLink.next = first;
+    first = newLink;
+    newLink.DisplayLink(); System.out.println(" was inserted");
+  }
 
-    Link pointer = first;
-    while (pointer.next != null) {
-      pointer = pointer.next;
-      System.out.printf("%d > ", pointer.iData);
+  public void DisplayList() {
+    Link currentLink = first;
+    int count = 0;
+    while (currentLink != null) {
+      currentLink.DisplayLink();
+      count++;
+      if (currentLink.next != null) {System.out.printf(" > ");}
+      currentLink = currentLink.next;
     }
+    System.out.printf("  : %d elements in the list \n", count);
   }
 }
