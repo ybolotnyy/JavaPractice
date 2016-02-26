@@ -64,6 +64,25 @@ public class LinkedList {
     linkToRemove.DisplayLink(); System.out.println(" was deleted");
   }
 
+  public void deleteById(int id) {
+    Link current = first;
+    while(current != null) {
+      if (current.iData == id) {
+        //delete Link
+      }
+      current = current.next;
+    }
+  }
+
+  public void findById()
+  {
+
+  }
+
+  public void findByNum() {
+
+  }
+
   public void displayList() {
     Link currentLink = first;
     int count = 0;
