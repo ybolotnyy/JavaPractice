@@ -5,6 +5,12 @@ package com.byn.practice.LinkedLists;
  */
 public class LinkedList {
 
+  private Link first;
+
+  public LinkedList() {
+    first = null;
+  }
+
   class Link{
     public int iData;
     public Link next;
@@ -39,12 +45,14 @@ public class LinkedList {
     ll.insertFirst(5);
 
     ll.displayList();
-  }
 
-  private Link first;
 
-  public LinkedList() {
-    first = null;
+    ll.deleteById(3);
+    ll.displayList();
+
+    ll.findById(2);
+
+    ll.findByNum(4);
   }
 
   public boolean isEmpty() {
@@ -65,22 +73,47 @@ public class LinkedList {
   }
 
   public void deleteById(int id) {
+    if (first.iData == id) {
+      first.DisplayLink(); System.out.println(" was deleted");
+      first = first.next;
+      return;
+    }
+
     Link current = first;
-    while(current != null) {
-      if (current.iData == id) {
+    while (current.next != null) {
+      if (current.next.iData == id) {
         //delete Link
+        System.out.printf("%d was deleted \n", current.next.iData);
+        current.next = current.next.next;
+      } else {
+        current = current.next;
       }
-      current = current.next;
     }
   }
 
-  public void findById()
-  {
-
+  public Link findById(int id) {
+    int count = 0;
+    Link current = first;
+    while (current != null) {
+      count++;
+      if (current.iData == id) {
+        System.out.printf("'%d' was found in link #%d \n", id, count);
+        return current;
+      }
+      current = current.next;
+    }
+    return current;
   }
 
-  public void findByNum() {
-
+  public Link findByNum(int count) {
+    Link current = first;
+    int i = 1;
+    while (current != null && i < count) {
+      current = current.next;
+      i++;
+    }
+    System.out.printf("Link in position #%d is '%d'", count, current.iData);
+    return current;
   }
 
   public void displayList() {
