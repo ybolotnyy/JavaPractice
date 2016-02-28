@@ -53,6 +53,13 @@ public class LinkedList {
     ll.findById(2);
 
     ll.findByNum(4);
+
+    System.out.printf("\n---------------------------\n");
+    ll.insertAfterNum(55, 3);
+    ll.displayList();
+    System.out.printf("\n---------------------------\n");
+    ll.insertAfterKey(55, 777);
+    ll.displayList();
   }
 
   public boolean isEmpty() {
@@ -126,5 +133,47 @@ public class LinkedList {
       currentLink = currentLink.next;
     }
     System.out.printf("  : %d elements in the list \n", count);
+  }
+
+  public void insertAfterNum(int value, int positionToInsertAfter) {
+    Link current = first;
+    int i = 1;
+    while (i < positionToInsertAfter && current != null) {
+      current = current.next;
+      i++;
+    }
+
+    if (i != positionToInsertAfter) {
+      System.out.printf("Insert to position #%d rejected - only %d links in the list \n", positionToInsertAfter, i);
+      return;
+    }
+
+    System.out.printf("Trying to insert '%d' after position %d \n ", value, i);
+    Link newLinkToInsert = new Link(value);
+    if (current.next == null) {
+      current.next = newLinkToInsert;
+    } else {
+      Link previos = current;
+      Link next = current.next;
+      previos.next = newLinkToInsert;
+      newLinkToInsert.next = next;
+    }
+
+    findById(value);
+  }
+
+  public void insertAfterKey(int iKey, int iData) {
+    Link current = first;
+    int i = 1;
+    while (current != null) {
+      if (current.iData == iKey) {
+        // found position to insert after
+        break;
+      }
+      current = current.next;
+      i++;
+    }
+
+    insertAfterNum(iData, i);
   }
 }
