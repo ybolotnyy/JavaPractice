@@ -144,8 +144,8 @@ public class DoublyLinkedList {
 
   public Link deleteKey(int iData) {
     System.out.printf("Delete '%d' \n", iData);
+    Link removedLink = null;
     Link current = first;
-    int i = 1;
 
     while (current != null) {
       if (current.iData == iData) {
@@ -153,50 +153,46 @@ public class DoublyLinkedList {
       }
       else {
         current = current.next;
-        i++;
       }
     }
 
     if (current == null) {
       System.out.printf("'%d' not found \n", iData);
       displayForward();
-      return null;
     }
     else if (first == last) {
-      Link removedLink = first;
+      removedLink = first;
       first = null;
       last = null;
       displayForward();
-      return removedLink;
     }
     else if (current == first) {
-      Link removedLink = first;
+      removedLink = first;
       Link next = removedLink.next;
 
       first = next;
       first.previous = null;
       displayForward();
-      return removedLink;
     }
     else if (current == last) {
-      Link removedLink = last;
+      removedLink = last;
       Link previous = removedLink.previous;
 
       last = previous;
       last.next = null;
       displayForward();
-      return removedLink;
     }
     else {
-      Link removedLink = current;
+      removedLink = current;
       Link previous = removedLink.previous;
       Link next = removedLink.next;
 
       previous.next = next;
       next.previous = previous;
       displayForward();
-      return removedLink;
     }
+
+    return removedLink;
   }
 
 
