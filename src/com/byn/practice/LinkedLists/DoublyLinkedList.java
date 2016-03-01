@@ -142,6 +142,34 @@ public class DoublyLinkedList {
     }
   }
 
+  public Link find(int iData) {
+    System.out.printf("Find link '%d' \n", iData);
+    int i = 1;
+    Link current = first;
+    Link foundLink = null;
+
+    while (current != null) {
+      if (current.iData == iData) {
+        System.out.printf("Founnd link '%d' in position #%d \n", iData, i);
+        break;
+      }
+      else {
+        current = current.next;
+        i++;
+      }
+    }
+
+    if (current == null) {
+      System.out.printf("Link '%d' not found \n", iData);
+      displayForward();
+    }
+    else {
+      foundLink = current;
+    }
+
+    return foundLink;
+  }
+
   public Link deleteKey(int iData) {
     System.out.printf("Delete '%d' \n", iData);
     Link removedLink = null;
@@ -227,5 +255,14 @@ public class DoublyLinkedList {
     dll.deleteKey(3);
     dll.deleteKey(3);
     dll.deleteKey(1);
+
+    dll.insertFirst(3);
+    dll.insertFirst(2);
+    dll.insertFirst(1);
+
+    dll.find(3);
+    dll.find(2);
+    dll.find(1);
+    dll.find(5);
   }
 }
