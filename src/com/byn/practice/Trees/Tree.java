@@ -54,18 +54,16 @@ public class Tree {
     String turn = null;
     System.out.printf("insert %d to the ", key);
 
+    Node parent;
     while (true) {
-      Node parent = current;
+      parent = current;
       if (key < current.data) {
         current = current.leftChild;
         level++;
         if (current == null) {
           parent.leftChild = insert;
           System.out.printf("left of %d at level %d\n", parent.data, level);
-          if (level > levels) {
-            levels = level;
-          }
-          return;
+          break;
         }
       } else { // key > current.data
         current = current.rightChild;
@@ -73,41 +71,14 @@ public class Tree {
         if (current == null) {
           parent.rightChild = insert;
           System.out.printf("right of %d at level %d\n", parent.data, level);
-          if (level > levels) {
-            levels = level;
-          }
-          return;
+          break;
         }
       }
     }
 
-    /*
-    while (current != null) {
-      parent = current;
-      if (key < current.data) {
-        current = current.leftChild;
-        level++;
-        turn = "left";
-      } else { //key > current.data
-        current = current.rightChild;
-        level++;
-        turn = "right";
-      }
+    if (level > levels) {
+      levels = level;
     }
-    // empty child found, so let's insert new node to it
-
-    switch (turn) {
-      case "left":
-        parent.leftChild = insert;
-        break;
-      case "right":
-        parent.rightChild = insert;
-        break;
-    }
-
-    System.out.printf("%s of %d at level %d\n", turn, parent.data, level);
-
-    */
   }
 
   public Node delete(int key) {
