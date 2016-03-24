@@ -6,7 +6,6 @@ package com.byn.practice.Trees;
 public class Main {
   public static void main(String[] args) {
     Tree tr = new Tree();
-    tr.displayTree();
 
     tr.insert(5);
     tr.insert(3);

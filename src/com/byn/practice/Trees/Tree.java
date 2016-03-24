@@ -42,22 +42,43 @@ public class Tree {
   public void insert(int key) {
     Node insert = new Node(key);
 
-    if (root == null) {
+    if (isEmpty()) {
       root = insert;
       levels = 1;
+      System.out.printf("insert %d to the root\n", key);
       return;
     }
 
     Node current = root;
+    Node prev = root;
     int level = 1;
+    String turn = null;
+    System.out.printf("insert %d to the ", key);
 
-    if (key < current.data) {
-      current.leftChild = insert;
-      System.out.printf("insert %d to the left from %d at level %d\n", key, current.data, ++level);
-    } else { // key > current.data
-      current.rightChild = insert;
-      System.out.printf("insert %d to the right from %d at level %d\n", key, current.data, ++level);
+    while (current != null) {
+      prev = current;
+      if (key < current.data) {
+        current = current.leftChild;
+        level++;
+        turn = "left";
+      } else { //key > current.data
+        current = current.rightChild;
+        level++;
+        turn = "right";
+      }
     }
+    // empty child found, so let's insert new node to it
+
+    switch (turn) {
+      case "left":
+        prev.leftChild = insert;
+        break;
+      case "right":
+        prev.rightChild = insert;
+        break;
+    }
+
+    System.out.printf("%s of %d at level %d\n", turn, prev.data, level);
 
     if (level > levels) {
       levels = level;
@@ -71,8 +92,8 @@ public class Tree {
   public void displayTree() {
     if (!isEmpty()) {
       System.out.printf("The tree has %d levels: \n", levels);
-      root.displayNode();
       Node current = root;
+      current.displayNode();
     }
   }
 
