@@ -85,14 +85,6 @@ public class Tree {
     return root;
   }
 
-  public void displayTree() {
-    if (!isEmpty()) {
-      System.out.printf("The tree has %d levels: \n", levels);
-      Node current = root;
-      current.displayNode();
-    }
-  }
-
   public boolean isEmpty() {
     if (root == null) {
       System.out.print("The tree is *empty*\n");
@@ -134,5 +126,47 @@ public class Tree {
       level++;
     }
     System.out.printf("Max tree value is '%d' at level %d\n",current.data, level);
+  }
+
+  public void displayTree() {
+    if (isEmpty()) {
+      return;
+    }
+
+    System.out.printf("The tree has %d levels: \n", levels);
+    //current.displayNode();
+
+    //calc left span
+    int leftSpan = 0;
+    Node current = root;
+    while (current.leftChild != null) {
+      current = current.leftChild;
+      leftSpan++;
+    }
+    //calc right span
+    int rightSpan = 0;
+    current = root;
+    while (current.rightChild != null) {
+      current = current.rightChild;
+      rightSpan++;
+    }
+    System.out.printf("The left + right max span is %d + %d \n", leftSpan, rightSpan);
+
+
+    inOrderByLevel(root, 1, 3);
+  }
+
+  public void inOrderByLevel(Node localRoot, int level, final int LEVEL) {
+    if (localRoot == null) {
+      level--;
+      return;
+    } else {
+      inOrderByLevel(localRoot.leftChild, level++, LEVEL);
+      if (level == LEVEL) {
+        System.out.printf("display node at level %d - ",level);
+        localRoot.displayNode();
+      }
+      inOrderByLevel(localRoot.rightChild, level++, LEVEL);
+    }
   }
 }
