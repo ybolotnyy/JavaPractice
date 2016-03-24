@@ -10,20 +10,19 @@ public class Main {
     tr.insert(5);
     tr.insert(3);
     tr.insert(7);
-    tr.displayTree();
-
-    tr.find(5);
-    tr.find(3);
-    tr.find(7);
-    tr.find(9);
-
+    tr.insert(2);
+    tr.insert(4);
     tr.insert(9);
-    tr.displayTree();
+    tr.insert(6);
+//    tr.insert(10);
+
     tr.find(9);
 
     tr.minValue();
     tr.maxValue();
 
     tr.traverseInOrder();
+
+    tr.displayTree();
   }
 }
