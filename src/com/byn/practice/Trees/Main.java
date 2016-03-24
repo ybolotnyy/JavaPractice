@@ -20,5 +20,7 @@ public class Main {
     tr.insert(9);
     tr.displayTree();
     tr.find(9);
+
+    tr.traverseInOrder();
   }
 }

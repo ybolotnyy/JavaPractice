@@ -100,4 +100,19 @@ public class Tree {
     }
     return false;
   }
+
+  public void traverseInOrder() {
+    System.out.print("\nTraversing the tree in ascending order:\n");
+    inOrder(root);
+  }
+
+  public void inOrder(Node localRoot) {
+    if (localRoot == null) {
+      return;
+    } else {
+      inOrder(localRoot.leftChild);
+      localRoot.displayNode();
+      inOrder(localRoot.rightChild);
+    }
+  }
 }
