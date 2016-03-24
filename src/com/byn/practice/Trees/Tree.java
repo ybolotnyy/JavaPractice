@@ -115,4 +115,24 @@ public class Tree {
       inOrder(localRoot.rightChild);
     }
   }
+
+  public void minValue() {
+    Node current = root;
+    int level = 1;
+    while (current.leftChild != null) {
+      current = current.leftChild;
+      level++;
+    }
+    System.out.printf("Min tree value is '%d' at level %d\n",current.data, level);
+  }
+
+  public void maxValue() {
+    Node current = root;
+    int level = 1;
+    while (current.rightChild != null) {
+      current = current.rightChild;
+      level++;
+    }
+    System.out.printf("Max tree value is '%d' at level %d\n",current.data, level);
+  }
 }

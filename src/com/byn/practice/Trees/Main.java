@@ -21,6 +21,9 @@ public class Main {
     tr.displayTree();
     tr.find(9);
 
+    tr.minValue();
+    tr.maxValue();
+
     tr.traverseInOrder();
   }
 }
