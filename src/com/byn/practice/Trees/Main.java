@@ -16,5 +16,10 @@ public class Main {
     tr.find(5);
     tr.find(3);
     tr.find(7);
+    tr.find(9);
+
+    tr.insert(9);
+    tr.displayTree();
+    tr.find(9);
   }
 }
