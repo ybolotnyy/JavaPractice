@@ -13,7 +13,9 @@ public class Node {
   }
 
   public void displayNode() {
-    System.out.printf("%2d", data);
+    System.out.printf("  %d\n", data);
+    System.out.printf(" / \\\n");
+    System.out.printf("%d   %d\n", leftChild.data, rightChild.data);
   }
 
 }
