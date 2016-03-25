@@ -1,5 +1,9 @@
 package com.byn.practice.Trees;
 
+import com.byn.practice.Queues.Queue;
+
+import java.util.LinkedList;
+
 /**
  * Created by BYN on 3/23/16.
  */
@@ -143,6 +147,9 @@ public class Tree {
 
     System.out.print("\nTraversing postOrder:\n");
     postOrder(root);
+
+    System.out.print("\nTraversing BFS - breadth first search:\n");
+    breadthFirstSearchBFS(root);
   }
 
   public void inOrder(Node localRoot) {
@@ -172,6 +179,27 @@ public class Tree {
       postOrder(localRoot.leftChild);
       postOrder(localRoot.rightChild);
       localRoot.displayNode();
+    }
+  }
+
+  public void breadthFirstSearchBFS(Node root) {
+    if (root == null) {
+      return;
+    }
+
+    java.util.Queue<Node> q = new LinkedList<>();
+    q.add(root);
+
+    while (!q.isEmpty()) {
+      Node c = q.remove();
+      System.out.println();
+      System.out.printf("%d", c.data);
+      if (c.leftChild != null) {
+        q.add(c.leftChild);
+      }
+      if (c.rightChild != null) {
+        q.add(c.rightChild);
+      }
     }
   }
 }
