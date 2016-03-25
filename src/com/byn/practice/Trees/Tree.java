@@ -98,16 +98,6 @@ public class Tree {
     inOrder(root);
   }
 
-  public void inOrder(Node localRoot) {
-    if (localRoot == null) {
-      return;
-    } else {
-      inOrder(localRoot.leftChild);
-      localRoot.displayNode();
-      inOrder(localRoot.rightChild);
-    }
-  }
-
   public void minValue() {
     Node current = root;
     int level = 1;
@@ -156,17 +146,35 @@ public class Tree {
     inOrderByLevel(root, 1, 3);
   }
 
-  public void inOrderByLevel(Node localRoot, int level, final int LEVEL) {
+  public void inOrder(Node localRoot) {
     if (localRoot == null) {
-      level--;
       return;
     } else {
-      inOrderByLevel(localRoot.leftChild, level++, LEVEL);
-      if (level == LEVEL) {
-        System.out.printf("display node at level %d - ",level);
-        localRoot.displayNode();
+      inOrder(localRoot.leftChild);
+      localRoot.displayNode();
+      inOrder(localRoot.rightChild);
+    }
+  }
+
+  public void inOrderByLevel(Node localRoot, int level, final int LEVEL) {
+    if (localRoot == null || level > LEVEL) {
+      return;
+    } else {
+      inOrderByLevel(localRoot.leftChild, level+1, LEVEL);
+      System.out.printf("level %d", level);
+      switch (level) {
+        case 1:
+          System.out.printf(" ");
+          break;
+        case 2:
+          System.out.printf("    ");
+          break;
+        case 3:
+          System.out.printf("       ");
+          break;
       }
-      inOrderByLevel(localRoot.rightChild, level++, LEVEL);
+      localRoot.displayNode();
+      inOrderByLevel(localRoot.rightChild, level+1, LEVEL);
     }
   }
 }
