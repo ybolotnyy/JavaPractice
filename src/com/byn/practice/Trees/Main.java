@@ -12,9 +12,11 @@ public class Main {
     tr.insert(7);
     tr.insert(4);
     tr.insert(9);
+    tr.insert(8);
     tr.insert(6);
-    tr.insert(2);
     tr.insert(1);
+    tr.insert(2);
+    tr.insert(0);
     tr.insert(10);
 
     tr.find(9);
@@ -22,7 +24,7 @@ public class Main {
     tr.minValue();
     tr.maxValue();
 
-  //  tr.traverseInOrder();
+    tr.traverseInOrder();
 
     tr.displayTree();
   }

@@ -98,6 +98,16 @@ public class Tree {
     inOrder(root);
   }
 
+  public void inOrder(Node localRoot) {
+    if (localRoot == null) {
+      return;
+    } else {
+      inOrder(localRoot.leftChild);
+      localRoot.displayNode();
+      inOrder(localRoot.rightChild);
+    }
+  }
+
   public void minValue() {
     Node current = root;
     int level = 1;
@@ -121,50 +131,21 @@ public class Tree {
   public void displayTree() {
     if (isEmpty()) {
       return;
-    }
-
-    System.out.printf("The tree has %d levels, ", levels);
-    //current.displayNode();
-
-    //calc left span
-    int leftSpan = 0;
-    Node current = root;
-    while (current.leftChild != null) {
-      current = current.leftChild;
-      leftSpan++;
-    }
-    //calc right span
-    int rightSpan = 0;
-    current = root;
-    while (current.rightChild != null) {
-      current = current.rightChild;
-      rightSpan++;
-    }
-    System.out.printf("the span is %d + %d :\n", leftSpan, rightSpan);
-
-
-    printTreeHorizontally(root, 1);
-  }
-
-  public void inOrder(Node localRoot) {
-    if (localRoot == null) {
-      return;
     } else {
-      inOrder(localRoot.leftChild);
-      localRoot.displayNode();
-      inOrder(localRoot.rightChild);
+      System.out.println("Print the tree horizontally: ");
+      traverseInOrderRightToLeft(root, 1);
     }
   }
 
-  public void printTreeHorizontally(Node localRoot, int level) {
+  public void traverseInOrderRightToLeft(Node localRoot, int level) {
     if (localRoot == null) {
       return;
     } else {
-      printTreeHorizontally(localRoot.rightChild, level+1);
+      traverseInOrderRightToLeft(localRoot.rightChild, level+1);
       System.out.printf("level %d", level);
       System.out.printf("%" + level*3 + "s", "");
       localRoot.displayNode();
-      printTreeHorizontally(localRoot.leftChild, level+1);
+      traverseInOrderRightToLeft(localRoot.leftChild, level+1);
     }
   }
 }
