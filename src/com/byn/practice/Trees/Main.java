@@ -10,18 +10,19 @@ public class Main {
     tr.insert(5);
     tr.insert(3);
     tr.insert(7);
-    tr.insert(2);
     tr.insert(4);
     tr.insert(9);
     tr.insert(6);
-//    tr.insert(10);
+    tr.insert(2);
+    tr.insert(1);
+    tr.insert(10);
 
     tr.find(9);
 
     tr.minValue();
     tr.maxValue();
 
-    tr.traverseInOrder();
+  //  tr.traverseInOrder();
 
     tr.displayTree();
   }

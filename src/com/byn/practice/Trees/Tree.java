@@ -123,7 +123,7 @@ public class Tree {
       return;
     }
 
-    System.out.printf("The tree has %d levels: \n", levels);
+    System.out.printf("The tree has %d levels, ", levels);
     //current.displayNode();
 
     //calc left span
@@ -140,10 +140,10 @@ public class Tree {
       current = current.rightChild;
       rightSpan++;
     }
-    System.out.printf("The left + right max span is %d + %d \n", leftSpan, rightSpan);
+    System.out.printf("the span is %d + %d :\n", leftSpan, rightSpan);
 
 
-    inOrderByLevel(root, 1, 3);
+    printTreeHorizontally(root, 1);
   }
 
   public void inOrder(Node localRoot) {
@@ -156,25 +156,15 @@ public class Tree {
     }
   }
 
-  public void inOrderByLevel(Node localRoot, int level, final int LEVEL) {
-    if (localRoot == null || level > LEVEL) {
+  public void printTreeHorizontally(Node localRoot, int level) {
+    if (localRoot == null) {
       return;
     } else {
-      inOrderByLevel(localRoot.leftChild, level+1, LEVEL);
+      printTreeHorizontally(localRoot.rightChild, level+1);
       System.out.printf("level %d", level);
-      switch (level) {
-        case 1:
-          System.out.printf(" ");
-          break;
-        case 2:
-          System.out.printf("    ");
-          break;
-        case 3:
-          System.out.printf("       ");
-          break;
-      }
+      System.out.printf("%" + level*3 + "s", "");
       localRoot.displayNode();
-      inOrderByLevel(localRoot.rightChild, level+1, LEVEL);
+      printTreeHorizontally(localRoot.leftChild, level+1);
     }
   }
 }
