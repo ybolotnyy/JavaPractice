@@ -93,21 +93,6 @@ public class Tree {
     return false;
   }
 
-  public void traverseInOrder() {
-    System.out.print("\nTraversing the tree in ascending order:\n");
-    inOrder(root);
-  }
-
-  public void inOrder(Node localRoot) {
-    if (localRoot == null) {
-      return;
-    } else {
-      inOrder(localRoot.leftChild);
-      localRoot.displayNode();
-      inOrder(localRoot.rightChild);
-    }
-  }
-
   public void minValue() {
     Node current = root;
     int level = 1;
@@ -133,19 +118,60 @@ public class Tree {
       return;
     } else {
       System.out.println("Print the tree horizontally: ");
-      traverseInOrderRightToLeft(root, 1);
+      inOrderRightToLeft(root, 1);
     }
   }
 
-  public void traverseInOrderRightToLeft(Node localRoot, int level) {
+  public void inOrderRightToLeft(Node localRoot, int level) {
     if (localRoot == null) {
       return;
     } else {
-      traverseInOrderRightToLeft(localRoot.rightChild, level+1);
+      inOrderRightToLeft(localRoot.rightChild, level+1);
       System.out.printf("level %d", level);
       System.out.printf("%" + level*3 + "s", "");
       localRoot.displayNode();
-      traverseInOrderRightToLeft(localRoot.leftChild, level+1);
+      inOrderRightToLeft(localRoot.leftChild, level+1);
+    }
+  }
+
+  public void traverseTree() {
+    System.out.print("\nTraversing inOrder:\n");
+    inOrder(root);
+
+    System.out.print("\nTraversing preOrder:\n");
+    preOrder(root);
+
+    System.out.print("\nTraversing postOrder:\n");
+    postOrder(root);
+  }
+
+  public void inOrder(Node localRoot) {
+    if (localRoot == null) {
+      return;
+    } else {
+      inOrder(localRoot.leftChild);
+      localRoot.displayNode();
+      inOrder(localRoot.rightChild);
+    }
+  }
+
+  public void preOrder(Node localRoot) {
+    if (localRoot == null) {
+      return;
+    } else {
+      localRoot.displayNode();
+      preOrder(localRoot.leftChild);
+      preOrder(localRoot.rightChild);
+    }
+  }
+
+  public void postOrder(Node localRoot) {
+    if (localRoot == null) {
+      return;
+    } else {
+      postOrder(localRoot.leftChild);
+      postOrder(localRoot.rightChild);
+      localRoot.displayNode();
     }
   }
 }
