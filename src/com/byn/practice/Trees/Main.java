@@ -37,10 +37,16 @@ public class Main {
     tr.minValue();
     tr.maxValue();
 
+    //  tr.traverseTree();
+
+    tr.displayTreeHorizontally();
+    //  tr.displayTreeVertically();
+
+    tr. deleteNode(11);
+    tr. deleteNode(10);
+    tr.displayTreeHorizontally();
+    tr. deleteNode(1);
     tr.displayTreeHorizontally();
 
-    tr.traverseTree();
-
-    tr.displayTreeVertically();
   }
 }

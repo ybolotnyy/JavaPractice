@@ -87,10 +87,6 @@ public class Tree {
     }
   }
 
-  public Node delete(int key) {
-    return root;
-  }
-
   public boolean isEmpty() {
     if (root == null) {
       System.out.print("The tree is *empty*\n");
@@ -123,7 +119,7 @@ public class Tree {
     if (isEmpty()) {
       return;
     } else {
-      System.out.println("Print the tree horizontally: ");
+      System.out.printf("\nPrint the tree horizontally: \n");
       inOrderRightToLeft(root, 1);
     }
   }
@@ -252,4 +248,60 @@ public class Tree {
     }
   }
 
+  public Boolean deleteNode(int key) {
+    if (isEmpty()) {
+      return false;
+    }
+    System.out.printf("\nTrying to find and delete '%d' : ", key);
+
+    Boolean isLeftChild = false;
+    Boolean isRightChild = false;
+    Node current = root;
+    Node parent = root;
+    while (current != null) {
+      if (current.data == key) {
+        break; // found node
+      } else {
+        parent = current;
+        isLeftChild = false;
+        isRightChild = false;
+
+        if (key < current.data) {
+          current = current.leftChild;
+          isLeftChild = true;
+        } else {
+          current = current.rightChild;
+          isRightChild = true;
+        }
+      }
+    }
+
+    if (current == null) {
+      System.out.printf("Node '%d' not found\n", key);
+      return false;
+    } else {
+      System.out.printf("Found node '%d' ", key);
+
+      String child;
+      if (isLeftChild) {
+        child = "left";
+      } else {
+        child = "right";
+      }
+
+      System.out.printf("at %s child of %d ", child, parent.data);
+
+      // delete the current node
+      if (isLeftChild) {
+        parent.leftChild = null;
+      } else if (isRightChild) {
+        parent.rightChild = null;
+      } else { // it's the root
+        root = null;
+        isEmpty();
+      }
+      System.out.println(" - deleted!");
+      return true;
+    }
+  }
 }
