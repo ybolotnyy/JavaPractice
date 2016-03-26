@@ -29,6 +29,9 @@ public class Main {
     tr.insert(6);
     tr.insert(9);
 
+    tr.insert(1);
+    tr.insert(10);
+
     tr.find(9);
 
     tr.minValue();

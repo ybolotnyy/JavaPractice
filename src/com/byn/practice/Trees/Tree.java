@@ -234,7 +234,6 @@ public class Tree {
         System.out.printf("\nlevel %d: %s ", level, padding);
       }
 
-      //System.out.printf("\nlevel %d: %d", l.get(c).intValue(), c.data);
       System.out.printf("%d%s", c.data, spacer);
       oldLevel = level;
 
