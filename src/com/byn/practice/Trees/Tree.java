@@ -2,7 +2,9 @@ package com.byn.practice.Trees;
 
 import com.byn.practice.Queues.Queue;
 
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 
 /**
  * Created by BYN on 3/23/16.
@@ -117,7 +119,7 @@ public class Tree {
     System.out.printf("Max tree value is '%d' at level %d\n",current.data, level);
   }
 
-  public void displayTree() {
+  public void displayTreeHorizontally() {
     if (isEmpty()) {
       return;
     } else {
@@ -202,4 +204,35 @@ public class Tree {
       }
     }
   }
+
+  public void displayTreeVertically() {
+    if (root == null) return;
+
+    java.util.Queue<Node> q = new LinkedList<Node>();
+    Map<Node,Integer> l = new HashMap<>();
+
+    int level = 1;
+    q.add(root);
+    l.put(root,level);
+
+    while (!q.isEmpty()) {
+      Node c = q.remove();
+      level = l.get(c).intValue();
+      System.out.printf("\nlevel %d: %d", l.get(c).intValue(), c.data);
+
+      if (c.leftChild != null || c.rightChild != null) {
+        level++;
+      }
+
+      if (c.leftChild != null) {
+        q.add(c.leftChild);
+        l.put(c.leftChild, level);
+      }
+      if (c.rightChild != null) {
+        q.add(c.rightChild);
+        l.put(c.rightChild, level);
+      }
+    }
+  }
+
 }

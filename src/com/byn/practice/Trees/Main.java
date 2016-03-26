@@ -34,8 +34,10 @@ public class Main {
     tr.minValue();
     tr.maxValue();
 
-    tr.displayTree();
+    tr.displayTreeHorizontally();
 
     tr.traverseTree();
+
+    tr.displayTreeVertically();
   }
 }
