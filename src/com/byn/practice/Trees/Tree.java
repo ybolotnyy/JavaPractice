@@ -13,6 +13,10 @@ public class Tree {
   private Node root;
   private int levels;
 
+  public enum nodeRelations {
+    isRoot, hasNoChilds, hasOneChild, hasTwoChilds
+  }
+
   public Tree() {
     this.root = null;
     this.levels = 0;
@@ -252,7 +256,7 @@ public class Tree {
     if (isEmpty()) {
       return false;
     }
-    System.out.printf("\nTrying to find and delete '%d' : ", key);
+    System.out.printf("\nTrying to find and delete '%d' : \n", key);
 
     Boolean isLeftChild = false;
     Boolean isRightChild = false;
@@ -289,19 +293,55 @@ public class Tree {
         child = "right";
       }
 
-      System.out.printf("at %s child of %d ", child, parent.data);
+      System.out.printf("at %s child of %d, ", child, parent.data);
+
+
+      // define the current node relations: isRoot, hasNoChilds, hasOneChild, hasTwoChilds
+      nodeRelations nr;
+      if (current == root) {
+        nr = nodeRelations.isRoot;
+      } else if (current.leftChild == null && current.rightChild == null) {
+        nr = nodeRelations.hasNoChilds;
+      } else if (current.leftChild != null && current.rightChild != null) {
+        nr = nodeRelations.hasTwoChilds;
+      } else {
+        nr = nodeRelations.hasOneChild;
+      }
+      System.out.print(nr);
 
       // delete the current node
-      if (isLeftChild) {
-        parent.leftChild = null;
-      } else if (isRightChild) {
-        parent.rightChild = null;
-      } else { // it's the root
-        root = null;
-        isEmpty();
+      Boolean wasSuccessfullyDeleted = false;
+      switch (nr) {
+        case hasNoChilds:
+          if (isLeftChild) {
+            parent.leftChild = null;
+          } else if (isRightChild) {
+            parent.rightChild = null;
+          }
+          wasSuccessfullyDeleted = true;
+          break;
+
+        case isRoot:
+          root = null;
+          isEmpty();
+          break;
+
+        case hasOneChild:
+          System.out.printf("\n* Wait * for implementation please");
+          break;
+
+         case hasTwoChilds:
+          System.out.printf("\n* Wait * for implementation please");
+          break;
       }
-      System.out.println(" - deleted!");
-      return true;
+
+
+
+
+
+
+      if (wasSuccessfullyDeleted) System.out.print(" - * deleted *\n");
+      return wasSuccessfullyDeleted;
     }
   }
 }

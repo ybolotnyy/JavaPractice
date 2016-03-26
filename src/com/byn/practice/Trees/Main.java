@@ -48,5 +48,12 @@ public class Main {
     tr. deleteNode(1);
     tr.displayTreeHorizontally();
 
+    tr.insert(1);
+    tr.insert(10);
+    tr.displayTreeHorizontally();
+
+    tr. deleteNode(2);
+    tr.displayTreeHorizontally();
+
   }
 }
