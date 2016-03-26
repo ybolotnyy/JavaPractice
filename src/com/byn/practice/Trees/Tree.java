@@ -212,13 +212,31 @@ public class Tree {
     Map<Node,Integer> l = new HashMap<>();
 
     int level = 1;
+    int oldLevel = 0;
     q.add(root);
     l.put(root,level);
 
     while (!q.isEmpty()) {
       Node c = q.remove();
       level = l.get(c).intValue();
-      System.out.printf("\nlevel %d: %d", l.get(c).intValue(), c.data);
+
+      String spacer = " ";
+      String padding = " ";
+
+      if (level != oldLevel) {
+        for (int i = 1; i < (4 - level); i++) {
+          padding += " ";
+          spacer += "  ";
+        }
+        if (c == root) {
+          padding = "    ";
+        }
+        System.out.printf("\nlevel %d: %s ", level, padding);
+      }
+
+      //System.out.printf("\nlevel %d: %d", l.get(c).intValue(), c.data);
+      System.out.printf("%d%s", c.data, spacer);
+      oldLevel = level;
 
       if (c.leftChild != null || c.rightChild != null) {
         level++;
