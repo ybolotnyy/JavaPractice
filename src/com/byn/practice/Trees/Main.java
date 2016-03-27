@@ -52,5 +52,11 @@ public class Main {
 
     tr.deleteNode(7);
     tr.displayTreeHorizontally();
+
+    tr.insert(14);
+    tr.displayTreeHorizontally();
+
+    tr.deleteNode(11);
+    tr.displayTreeHorizontally();
   }
 }
