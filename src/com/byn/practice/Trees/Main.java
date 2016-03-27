@@ -23,10 +23,7 @@ public class Main {
     tr.minValue();
     tr.maxValue();
 
-    //  tr.traverseTree();
-
     tr.displayTreeHorizontally();
-    //  tr.displayTreeVertically();
 
     tr. deleteNode(11);
     tr. deleteNode(10);
