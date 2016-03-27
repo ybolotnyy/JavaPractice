@@ -327,18 +327,27 @@ public class Tree {
           break;
 
         case hasOneChild:
-          System.out.printf("\n* Wait * for implementation please");
+          if (current.leftChild != null) { // let's link left child to parent
+            if (isLeftChild) {
+              parent.leftChild = current.leftChild;
+            } else {
+              parent.rightChild = current.leftChild;
+            }
+            wasSuccessfullyDeleted = true;
+          } else { // so there is right child only, let's link it to parent
+            if (isLeftChild) {
+              parent.leftChild = current.rightChild;
+            } else {
+              parent.rightChild = current.rightChild;
+            }
+            wasSuccessfullyDeleted = true;
+          }
           break;
 
-         case hasTwoChilds:
+        case hasTwoChilds:
           System.out.printf("\n* Wait * for implementation please");
           break;
       }
-
-
-
-
-
 
       if (wasSuccessfullyDeleted) System.out.print(" - * deleted *\n");
       return wasSuccessfullyDeleted;

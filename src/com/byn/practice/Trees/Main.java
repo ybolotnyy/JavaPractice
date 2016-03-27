@@ -7,20 +7,6 @@ public class Main {
   public static void main(String[] args) {
     Tree tr = new Tree();
 
-    /*
-    tr.insert(5);
-    tr.insert(3);
-    tr.insert(7);
-    tr.insert(4);
-    tr.insert(9);
-    tr.insert(8);
-    tr.insert(6);
-    tr.insert(1);
-    tr.insert(2);
-    tr.insert(0);
-    tr.insert(10);
-    */
-
     tr.insert(5);
     tr.insert(3);
     tr.insert(7);
@@ -53,7 +39,15 @@ public class Main {
     tr.displayTreeHorizontally();
 
     tr. deleteNode(2);
+    tr. deleteNode(9);
     tr.displayTreeHorizontally();
 
+    tr. deleteNode(10);
+    tr. deleteNode(1);
+    tr.insert(2);
+    tr.insert(9);
+    tr.insert(1);
+    tr.insert(10);
+    tr.displayTreeHorizontally();
   }
 }
