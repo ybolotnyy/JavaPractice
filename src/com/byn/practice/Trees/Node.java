@@ -15,4 +15,12 @@ public class Node {
   public void displayNode() {
     System.out.printf("  %d\n", data);
   }
+
+  public Boolean hasLeftChild() {
+    return (leftChild != null);
+  }
+
+  public Boolean hasRightChild() {
+    return (rightChild != null);
+  }
 }

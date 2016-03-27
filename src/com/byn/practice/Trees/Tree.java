@@ -106,7 +106,16 @@ public class Tree {
       current = current.leftChild;
       level++;
     }
-    System.out.printf("Min tree value is '%d' at level %d\n",current.data, level);
+    System.out.printf("\nMin tree value is '%d' at level %d\n",current.data, level);
+  }
+
+  public Node minValue(Node startNode) {
+    Node current = startNode;
+    while (current.leftChild != null) {
+      current = current.leftChild;
+    }
+    System.out.printf("\nMin '%d' sub-tree value is '%d'\n", startNode.data, current.data);
+    return current;
   }
 
   public void maxValue() {
@@ -345,7 +354,19 @@ public class Tree {
           break;
 
         case hasTwoChilds:
-          System.out.printf("\n* Wait * for implementation please");
+          Node successor = minValue(current.rightChild);
+          // let's replace current node with successor
+          // first - unlink successor from its parent
+          deleteNode(successor.data);
+          // second - link current.left/right childs to successor
+          if (current.hasLeftChild()) successor.leftChild = current.leftChild;
+          if (current.hasRightChild()) successor.rightChild = current.rightChild;
+          // third - link successor to parent of current
+          if (isLeftChild) {
+            parent.leftChild = successor;
+          } else { // isRightChild
+            parent.rightChild = successor;
+          }
           break;
       }
 

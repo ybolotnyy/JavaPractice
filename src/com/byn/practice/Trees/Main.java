@@ -42,9 +42,15 @@ public class Main {
     tr. deleteNode(10);
     tr. deleteNode(1);
     tr.insert(2);
-    tr.insert(9);
+    tr.insert(15);
     tr.insert(1);
-    tr.insert(10);
+    tr.insert(20);
+
+    tr.insert(13);
+    tr.insert(11);
+    tr.displayTreeHorizontally();
+
+    tr.deleteNode(7);
     tr.displayTreeHorizontally();
   }
 }
