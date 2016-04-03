@@ -7,7 +7,7 @@ public class HashTable {
   int hashedArraySize;
   private int[] hashedArray;
 
-  public HashTable(int dataArraySize) {
+  public HashTable(int dataArraySize, int fillRatio) {
     this.hashedArraySize = dataArraySize * 2;
     this.hashedArray = new int[hashedArraySize];
   }
@@ -29,12 +29,12 @@ public class HashTable {
   }
 
   public void put(int value) {
-    System.out.printf("Trying to insert %d to hash table %n", value);
+    System.out.printf("\nTrying to insert %d %n", value);
     int index = hashFunction(value);
     if (hashedArray[index] == 0) {
       hashedArray[index] = value;
     } else {
-      System.out.printf("Collision at index %d %n, ", index);
+      System.out.printf("Collision at index %d, ", index);
       while (hashedArray[index] != 0 && index < hashedArraySize) {
         index++;
       }
