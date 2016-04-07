@@ -5,11 +5,14 @@ package com.byn.practice.HashTables;
  */
 public class HashTable {
   int hashedArraySize;
+  int maxItemsCanBeSaved;
+  int totalSavedItemsCount;
   private int[] hashedArray;
 
   public HashTable(int dataArraySize, int fillRatio) {
     this.hashedArraySize = dataArraySize * 2;
     this.hashedArray = new int[hashedArraySize];
+
   }
 
   public void print() {
